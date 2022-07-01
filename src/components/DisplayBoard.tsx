@@ -1,4 +1,4 @@
-import { apis } from '../shared/config'
+// import { apis } from '../shared/config'
 
 interface IPropsDisplayBoard {
   data: any
@@ -27,8 +27,14 @@ const DisplayBoard = ({ data }: IPropsDisplayBoard) => {
                   <td>{(item as any).Year}</td>
                   <td>{(item as any).imdbID}</td>
                   <td>
-                    <img
+                    {/* <img
                       src={apis.server+(item as any).Poster}
+                      width="50px"
+                      height="50px"
+                      alt="poster"
+                    /> */}
+                    <img
+                      src={(item as any).Poster}
                       width="50px"
                       height="50px"
                       alt="poster"

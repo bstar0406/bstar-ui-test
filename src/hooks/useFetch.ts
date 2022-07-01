@@ -11,5 +11,5 @@ export const useFetch = (url:string) => {
       });
   }, [url]);
 
-  return data;
+  return (data as any)?.Search;
 };
