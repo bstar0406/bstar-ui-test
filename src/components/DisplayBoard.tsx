@@ -7,7 +7,7 @@ const columns: GridColDef[] = [
     return (
       <>
         <img
-          src={params.value.src==="N/A"?params.value.src:'../assets/images/default.png'}
+          src={params.value.src!=="N/A"?params.value.src:'../assets/images/default.png'}
           width="50px"
           height="50px"
           alt="poster"
