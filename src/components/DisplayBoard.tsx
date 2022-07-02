@@ -3,11 +3,11 @@ import React from 'react';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'No', width: 70},
-  { field: 'poster', headerName: 'Poster', width: 130, flex:1, renderCell: (item) => {
+  { field: 'poster', headerName: 'Poster', width: 130, flex:1, renderCell: (params) => {
     return (
       <>
         <img
-          src={(item as any).Poster}
+          src={params.value.src}
           width="50px"
           height="50px"
           alt="poster"
@@ -47,7 +47,7 @@ const DisplayBoard = ({ data }: IPropsDisplayBoard) => {
       data.map((item: any, index: number) => {
         temp.push({
           id:index+1,
-          poster:{item},
+          poster:{src:(item as any).Poster},
         title:item.Title,
         type:item.Type,
         year:item.Year,
@@ -71,4 +71,4 @@ const DisplayBoard = ({ data }: IPropsDisplayBoard) => {
   )
 }
 
-export default DisplayBoard
+export default DisplayBoard;
