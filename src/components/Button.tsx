@@ -1,4 +1,3 @@
-import { useFetch } from '../hooks/useFetch'
 import Button from '@mui/material/Button'
 interface IPropsButton {
   name: string
@@ -6,10 +5,9 @@ interface IPropsButton {
   fetchData: Function
 }
 const ButtonComponent = ({ name, url, fetchData }: IPropsButton) => {
-  const data = useFetch(url)
   const clickHandler = (e:any) => {
     e.preventDefault();
-    fetchData(data)
+    fetchData(url)
     // localStorage.setItem( name, JSON.stringify(data));
   }
   return (
