@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.MuiDataGrid-columnHeader:focus-within, .MuiDataGrid-cell:focus-within {
+  outline: none !important;
+}
+.app{
+  position: relative !important;
+}
+.spinner{
+  position: absolute !important;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.753);
+  z-index: 100;
+}

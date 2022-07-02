@@ -1,18 +1,43 @@
+import React from 'react'
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import React from 'react';
+import { makeStyles, withStyles } from '@mui/styles';
+import {apis}  from '../shared/config'
+const useStyles = makeStyles({
+  root: {
+      '&.MuiDataGrid-root .MuiDataGrid-cell:focus': {
+          outline: 'none',
+      },
+  }
+});
+
+const StyledDataGrid = withStyles({
+  root: {
+      '& .MuiDataGrid-renderingZone': {
+          maxHeight: 'none !important',
+      },
+      '& .MuiDataGrid-cell': {
+          lineHeight: 'unset !important',
+          maxHeight: 'none !important',
+          whiteSpace: 'normal',
+      },
+      '& .MuiDataGrid-row': {
+          maxHeight: 'none !important',
+      },
+  },
+})(DataGrid);
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'No', width: 70},
   { field: 'poster', headerName: 'Poster', width: 130, flex:1, renderCell: (params) => {
     return (
-      <>
+      <div className='py-3'>
         <img
-          src={params.value.src!=="N/A"?params.value.src:'../assets/images/default.png'}
-          width="50px"
-          height="50px"
+          src={apis.server+params.value.src}
+          width="100px"
+          height="100px"
           alt="poster"
         />
-      </>
+      </div>
     );
   } },
   { field: 'title', headerName: 'Title', width: 130, flex:1 },
@@ -39,8 +64,10 @@ const columns: GridColDef[] = [
 interface IPropsDisplayBoard {
   data: any
 }
+
 const DisplayBoard = ({ data }: IPropsDisplayBoard) => {
   const [rows, setRows] = React.useState<Array<any>>([]);
+  const classes = useStyles();
   React.useEffect(()=>{
     let temp:Array<any> = [];
     if(data){
@@ -57,15 +84,16 @@ const DisplayBoard = ({ data }: IPropsDisplayBoard) => {
         return item;
       })
     }
-    console.log(data)
   },[data])
   return (
     <div className="container" style={{ height: 500, width: '100%' }}>
-      <DataGrid
+      <StyledDataGrid
+        className={classes.root}
         rows={rows}
         columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        disableSelectionOnClick
       />
     </div>
   )
