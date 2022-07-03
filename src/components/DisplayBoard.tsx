@@ -1,7 +1,6 @@
 import React from 'react'
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { makeStyles, withStyles } from '@mui/styles';
-import {apis}  from '../shared/config'
 const useStyles = makeStyles({
   root: {
       '&.MuiDataGrid-root .MuiDataGrid-cell:focus': {
@@ -32,7 +31,8 @@ const columns: GridColDef[] = [
     return (
       <div className='py-3'>
         <img
-          src={apis.server+params.value.src}
+          // src={apis.server+params.value.src}
+          src={params.value.src!=='N/A'?params.value.src:'../assets/images/default.png'}
           width="100px"
           height="100px"
           alt="poster"
