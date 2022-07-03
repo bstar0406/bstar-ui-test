@@ -34,8 +34,8 @@ function App() {
     setLoading(true)
     const tempData: any = await getDataAsync(url)
     setLoading(false)
-    setData(tempData.data)
-    setSuccess(tempData.success)
+    setData(tempData)
+    setSuccess(true)
     setOpen(true)
   }
   const handleClose = (
@@ -62,21 +62,21 @@ function App() {
           <Button
             variant="contained"
             color="success"
-            onClick={() => fetchData(apis.back_api1)}
+            onClick={() => fetchData(apis.api1)}
           >
             APi1
           </Button>
           <Button
             variant="contained"
             color="success"
-            onClick={() => fetchData(apis.back_api2)}
+            onClick={() => fetchData(apis.api2)}
           >
             APi2
           </Button>
           <Button
             variant="contained"
             color="success"
-            onClick={() => fetchData(apis.back_api3)}
+            onClick={() => fetchData(apis.api3)}
           >
             APi3
           </Button>
